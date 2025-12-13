@@ -1,6 +1,6 @@
 class BankAccount:
     def __init__(self,initial_balance = 0):
-        self.balance = initial_balance
+        self.__balance = initial_balance
 
     @staticmethod
     def is_valid_amount(amount):
@@ -8,7 +8,7 @@ class BankAccount:
 
     def deposit(self,amount):
         if BankAccount.is_valid_amount(amount):
-            self.balance = self.balance + amount
+            self.__balance = self.__balance + amount
             print("Deposited : ", str(amount))
         else:
             print("invalid deposit amount!")
@@ -16,14 +16,14 @@ class BankAccount:
     def withdraw(self,amount):
         if not BankAccount.is_valid_amount(amount):
             print("Invalid withdrawal amount!")
-        elif amount > self.balance:
+        elif amount > self.__balance:
             print("Insufficient balance!")
         else:
-            self.balance = self.balance - amount
+            self.__balance = self.__balance - amount
             print("withdraw : ",str(amount))
     
     def get_balance(self):
-        return self.balance
+        return self.__balance
 
 account = BankAccount()
 
